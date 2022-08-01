@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OfficeModelStoreContainer" CdmEntityContainer="OfficeEntities">
+    <EntitySetMapping Name="ManagerTable">
+      <EntityTypeMapping TypeName="OfficeModel.ManagerTable">
+        <MappingFragment StoreEntitySet="ManagerTable">
+          <ScalarProperty Name="ManageId" ColumnName="ManageId" />
+          <ScalarProperty Name="ManageName" ColumnName="ManageName" />
+          <ScalarProperty Name="Manageddress" ColumnName="Manageddress" />
+          <ScalarProperty Name="ManageContact" ColumnName="ManageContact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="OfficeModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
