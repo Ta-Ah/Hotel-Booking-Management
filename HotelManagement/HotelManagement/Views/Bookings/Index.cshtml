@@ -1,0 +1,70 @@
+﻿@model IEnumerable<HotelManagement.Models.Booking>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Booking_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Check_in)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Check_out)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Guest_num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Room)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GUEST_TABLE.Guest_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.room_tab.room_type)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Booking_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Check_in)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Check_out)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guest_num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Room)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GUEST_TABLE.Guest_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.room_tab.room_type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Booking_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Booking_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Booking_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OceanParadiseeHotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminPanel">
+    <Key>
+      <PropertyRef Name="adminID" />
+    </Key>
+    <Property Name="adminID" Type="Int32" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="loginPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="room_tab" Relationship="Self.fk_adminID" FromRole="AdminPanel" ToRole="room_tab" />
+    <NavigationProperty Name="Room_image" Relationship="Self.fk_adminID1" FromRole="AdminPanel" ToRole="Room_image" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_id" />
+    </Key>
+    <Property Name="Booking_id" Type="Int32" Nullable="false" />
+    <Property Name="Guest_id" Type="Int32" Nullable="false" />
+    <Property Name="Booking_date" Type="DateTime" Precision="0" />
+    <Property Name="Check_in" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Check_out" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Guest_num" Type="Int32" Nullable="false" />
+    <Property Name="Room_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Total_Room" Type="Int32" />
+    <NavigationProperty Name="PAYMENTs" Relationship="Self.fk_bookID" FromRole="Booking" ToRole="PAYMENT" />
+    <NavigationProperty Name="GUEST_TABLE" Relationship="Self.fk_guestID" FromRole="Booking" ToRole="GUEST_TABLE" />
+    <NavigationProperty Name="room_tab" Relationship="Self.fk_roomType" FromRole="Booking" ToRole="room_tab" />
+  </EntityType>
+  <EntityType Name="GUEST_TABLE">
+    <Key>
+      <PropertyRef Name="Guest_Id" />
+    </Key>
+    <Property Name="Guest_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Guest_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Guest_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Guest_PassWword" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Guest_Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.fk_guestID" FromRole="GUEST_TABLE" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="PAYMENT">
+    <Key>
+      <PropertyRef Name="PATMENT_ID" />
+    </Key>
+    <Property Name="PATMENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="Booking_id" Type="Int32" Nullable="false" />
+    <Property Name="PAYMENT_DATE" Type="DateTime" Precision="0" />
+    <Property Name="TOTAL_AMMOUNT" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Booking" Relationship="Self.fk_bookID" FromRole="PAYMENT" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="Room_image">
+    <Key>
+      <PropertyRef Name="room_id" />
+    </Key>
+    <Property Name="room_id" Type="Int32" Nullable="false" />
+    <Property Name="adminID" Type="Int32" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AdminPanel" Relationship="Self.fk_adminID1" FromRole="Room_image" ToRole="AdminPanel" />
+  </EntityType>
+  <EntityType Name="room_tab">
+    <Key>
+      <PropertyRef Name="room_type" />
+    </Key>
+    <Property Name="adminID" Type="Int32" Nullable="false" />
+    <Property Name="room_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rate" Type="Int32" Nullable="false" />
+    <Property Name="total_room" Type="Int32" Nullable="false" />
+    <Property Name="booked_room" Type="Int32" />
+    <Property Name="vacant_room" Type="Int32" />
+    <NavigationProperty Name="AdminPanel" Relationship="Self.fk_adminID" FromRole="room_tab" ToRole="AdminPanel" />
+    <NavigationProperty Name="Bookings" Relationship="Self.fk_roomType" FromRole="room_tab" ToRole="Booking" />
+  </EntityType>
+  <Association Name="fk_adminID">
+    <End Role="AdminPanel" Type="Self.AdminPanel" Multiplicity="1" />
+    <End Role="room_tab" Type="Self.room_tab" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdminPanel">
+        <PropertyRef Name="adminID" />
+      </Principal>
+      <Dependent Role="room_tab">
+        <PropertyRef Name="adminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_adminID1">
+    <End Role="AdminPanel" Type="Self.AdminPanel" Multiplicity="1" />
+    <End Role="Room_image" Type="Self.Room_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdminPanel">
+        <PropertyRef Name="adminID" />
+      </Principal>
+      <Dependent Role="Room_image">
+        <PropertyRef Name="adminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_bookID">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+    <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Booking_id" />
+      </Principal>
+      <Dependent Role="PAYMENT">
+        <PropertyRef Name="Booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_guestID">
+    <End Role="GUEST_TABLE" Type="Self.GUEST_TABLE" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GUEST_TABLE">
+        <PropertyRef Name="Guest_Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Guest_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_roomType">
+    <End Role="room_tab" Type="Self.room_tab" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="room_tab">
+        <PropertyRef Name="room_type" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Room_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OceanParadiseeHotelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminPanels" EntityType="Self.AdminPanel" />
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="GUEST_TABLE" EntityType="Self.GUEST_TABLE" />
+    <EntitySet Name="PAYMENTs" EntityType="Self.PAYMENT" />
+    <EntitySet Name="Room_image" EntityType="Self.Room_image" />
+    <EntitySet Name="room_tab" EntityType="Self.room_tab" />
+    <AssociationSet Name="fk_adminID" Association="Self.fk_adminID">
+      <End Role="AdminPanel" EntitySet="AdminPanels" />
+      <End Role="room_tab" EntitySet="room_tab" />
+    </AssociationSet>
+    <AssociationSet Name="fk_adminID1" Association="Self.fk_adminID1">
+      <End Role="AdminPanel" EntitySet="AdminPanels" />
+      <End Role="Room_image" EntitySet="Room_image" />
+    </AssociationSet>
+    <AssociationSet Name="fk_bookID" Association="Self.fk_bookID">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="PAYMENT" EntitySet="PAYMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_guestID" Association="Self.fk_guestID">
+      <End Role="GUEST_TABLE" EntitySet="GUEST_TABLE" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_roomType" Association="Self.fk_roomType">
+      <End Role="room_tab" EntitySet="room_tab" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

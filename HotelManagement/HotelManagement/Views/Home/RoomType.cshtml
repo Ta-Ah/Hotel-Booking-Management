@@ -1,0 +1,273 @@
+﻿@model List<HotelManagement.Models.room_tab>
+
+@{
+    ViewBag.Title = "RoomType";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--BOOTSTRAP 5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!--FONT AWESOME ICON-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="~/stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <title>Odyssey Resort- Booking</title>
+</head>
+<body>
+
+
+
+    <section id="carousel">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="~/Content/images/carousal-img-1.png" alt="slide image-01" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="~/Content/images/carousal-img-2.png" alt="slide image-02" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="~/Content/images/carousal-img-3.png" alt="slide image-03" />
+                            </div>
+                            <div class="carousel-item">
+                            </div>
+                            <img src="~/Content/images/carousal-img-5.png" alt="slide image-05" />
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-container" data-bs-slide="prev">
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel-container" data-bs-slide="next">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <section id="booking-container">
+        <div class="container-fluid">
+            <div class="row g-3">
+                <div class="col-lg-7">
+                    <div class="avail-room">
+                        <h3>Available Guest Rooms</h3>
+                        <div class="row my-3 avail-container">
+                            <div class="col-sm-4">
+                                <img src="/Content/images/one-bedroom.jfif" alt="one">
+                            </div>
+                            <div class="col-sm-8">
+                                <h2>
+                                    @Html.DisplayFor(m => m[0].room_type)
+
+                                </h2>
+
+                                <div class="available-content">
+                                    <div class="room-cap">
+                                        <h6>Room Capacity</h6>
+                                        <h5>
+                                            <i class="fa-solid fa-bed"></i><span>
+    <h2>
+        @Html.DisplayFor(m => m[0].total_room)
+
+    </h2>
+
+
+</span>
+                                        </h5>
+                                    </div>
+                                    <div class="cost">
+                                        <h6>per room per night</h6>
+                                        <h3>
+                                            BDT <span>
+    @Html.DisplayFor(m => m[0].rate)
+
+
+
+
+</span>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="choose-button">
+                                    <h4>
+                                        @Html.DisplayFor(m => m[0].vacant_room)  Rooms Left
+                                    </h4>
+                                    <a href="~/Home/Index">
+                                        <button type="button" class="btn btn-outline-info modal-button mx-md-1" data-bs-toggle="modal" data-bs-target="#booking_modal_one">
+                                            Choose
+                                        </button>
+                                    </a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-3 avail-container">
+                            <div class="col-sm-4">
+                                <img src="/Content/images/two-bedroom.jfif" alt="two">
+                            </div>
+                            <div class="col-sm-8">
+                                <h2>
+                                    @Html.DisplayFor(m => m[1].room_type)
+                                   
+                                </h2>
+
+                                <div class="available-content">
+                                    <div class="room-cap">
+                                        <h6>Room Capacity</h6>
+                                        <h5>
+                                            <i class="fa-solid fa-bed"></i><span>
+    @Html.DisplayFor(m => m[1].total_room)
+</span>
+                                        </h5>
+                                    </div>
+                                    <div class="cost">
+                                        <h6>per room per night</h6>
+                                        <h3>
+                                            BDT <span>
+    @Html.DisplayFor(m => m[1].rate)
+                                            
+</span>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="choose-button">
+                                    <h4>
+                                        @Html.DisplayFor(m => m[1].vacant_room) Rooms Left
+                                    </h4>
+
+
+
+                                      
+                                    <a href="~/Bookings/Index" >
+                                    <input type="submit" class="btn btn-outline-info modal-button mx-md-1" value="Some text" /></a>
+                                      
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="cancel-rules">
+                        <h3>Cancellation Policy</h3>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-angles-right"></i>
+                                <span>
+                                    For any individual booking, Cancellation Notice must be given at-least 72 hours prior to
+                                    Arrival/Check-in date. During specific periods such as consecutive Government holidays, Eid-Ul-Fitr,
+                                    Eid-Ul-Azha, Christmas, Buddha Purnima, Bengali New Year, Durga Puja, New Year’s Eve etc.,
+                                    cancellation
+                                    notice must be given at-least 15 days prior to Arrival/Check-in date. Cancellation made after the
+                                    period
+                                    of notice OR No-Shows will be charged one full night's Room Tariff (of each room booked) with 15% VAT
+                                    and 10% Service Charge
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angles-right"></i>
+                                <span>
+                                    For any Group Booking (Minimum 10 Rooms), Cancellation Notice must be given at least 10 days prior
+                                    to Arrival/Check-in date.
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angles-right"></i>
+                                <span>
+                                    For above 10 Rooms, cancellation notice must be given at-least 25 days prior to Arrival/Check-in
+                                    date. During specific periods such as consecutive Government holidays, Eid-Ul-Fitr, Eid-Ul-Azha,
+                                    Christmas, Buddha Purnima, Bengali New Year, Durga Puja, New Year’s Eve etc., cancellation notice must
+                                    be given at-least 35 days prior to Arrival/Check-in date. Cancellation made after the period of notice
+                                    OR No-Shows we charge 50% of the total budget.
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="Footer" class="Footer-container">
+        <div class="container-fluid">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="footer-content-container">
+                        <h2><a href="index.php">Odyssey Resort</a></h2>
+                        <div class="footer-content-icon">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-content-container">
+                        <h4>Quick Links</h4>
+                        <div class="footer-content-links">
+                            <a href="~/Home/Index">Home <span>&#62;</span></a>
+                            <a href="~/Home/Gallery">Gallary <span>&#62;</span></a>
+                            <a href="~/Home/RoomType">Room Type <span>&#62;</span></a>
+                            <a href="~/Home/About">About <span>&#62;</span></a>
+                            <a href="~/Home/Contact" target="_blank">Contact <span>&#62;</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-content-container">
+                        <h4> Our Address</h4>
+                        <div class="footer-content-address">
+                            <p> <i class="fas fa-map"></i> Gazipur, Dhaka, Bangladesh</p>
+                            <p> <i class="fas fa-phone"></i> +999666333 </p>
+                            <p> <i class="fas fa-envelope"></i> odyssey@gmail.com </p>
+                            <p> <i class="fas fa-clock"></i> 7:00am - 10:00pm </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+

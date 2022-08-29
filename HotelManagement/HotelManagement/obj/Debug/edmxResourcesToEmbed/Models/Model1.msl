@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OceanParadiseeHotelModelStoreContainer" CdmEntityContainer="OceanParadiseeHotelEntities">
+    <EntitySetMapping Name="AdminPanels">
+      <EntityTypeMapping TypeName="OceanParadiseeHotelModel.AdminPanel">
+        <MappingFragment StoreEntitySet="AdminPanel">
+          <ScalarProperty Name="adminID" ColumnName="adminID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="loginPassword" ColumnName="loginPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="OceanParadiseeHotelModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="Booking_id" ColumnName="Booking_id" />
+          <ScalarProperty Name="Guest_id" ColumnName="Guest_id" />
+          <ScalarProperty Name="Booking_date" ColumnName="Booking_date" />
+          <ScalarProperty Name="Check_in" ColumnName="Check_in" />
+          <ScalarProperty Name="Check_out" ColumnName="Check_out" />
+          <ScalarProperty Name="Guest_num" ColumnName="Guest_num" />
+          <ScalarProperty Name="Room_type" ColumnName="Room_type" />
+          <ScalarProperty Name="Total_Room" ColumnName="Total_Room" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GUEST_TABLE">
+      <EntityTypeMapping TypeName="OceanParadiseeHotelModel.GUEST_TABLE">
+        <MappingFragment StoreEntitySet="GUEST_TABLE">
+          <ScalarProperty Name="Guest_Id" ColumnName="Guest_Id" />
+          <ScalarProperty Name="Guest_Name" ColumnName="Guest_Name" />
+          <ScalarProperty Name="Guest_Email" ColumnName="Guest_Email" />
+          <ScalarProperty Name="Guest_PassWword" ColumnName="Guest_PassWword" />
+          <ScalarProperty Name="Guest_Phone" ColumnName="Guest_Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAYMENTs">
+      <EntityTypeMapping TypeName="OceanParadiseeHotelModel.PAYMENT">
+        <MappingFragment StoreEntitySet="PAYMENT">
+          <ScalarProperty Name="PATMENT_ID" ColumnName="PATMENT_ID" />
+          <ScalarProperty Name="Booking_id" ColumnName="Booking_id" />
+          <ScalarProperty Name="PAYMENT_DATE" ColumnName="PAYMENT_DATE" />
+          <ScalarProperty Name="TOTAL_AMMOUNT" ColumnName="TOTAL_AMMOUNT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Room_image">
+      <EntityTypeMapping TypeName="OceanParadiseeHotelModel.Room_image">
+        <MappingFragment StoreEntitySet="Room_image">
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+          <ScalarProperty Name="adminID" ColumnName="adminID" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="room_tab">
+      <EntityTypeMapping TypeName="OceanParadiseeHotelModel.room_tab">
+        <MappingFragment StoreEntitySet="room_tab">
+          <ScalarProperty Name="adminID" ColumnName="adminID" />
+          <ScalarProperty Name="room_type" ColumnName="room_type" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="total_room" ColumnName="total_room" />
+          <ScalarProperty Name="booked_room" ColumnName="booked_room" />
+          <ScalarProperty Name="vacant_room" ColumnName="vacant_room" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
